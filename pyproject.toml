@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "octp"
-version = "0.1.0"
+name = "octp-python"
+version = "0.2.0"
 description = "Open Contribution Trust Protocol — reference implementation"
 readme = "README.md"
 license = { file = "LICENSE" }
