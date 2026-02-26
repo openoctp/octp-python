@@ -1,9 +1,6 @@
 """Performance benchmarks for OCTP."""
 
 import time
-from pathlib import Path
-
-import pytest
 
 from octp.verification.registry import run_all
 
@@ -20,7 +17,7 @@ class TestPerformance:
         start = time.time()
         # This will fail because it's not a real git repo, but we measure timing
         try:
-            results = run_all(tmp_path, profile="fast")
+            run_all(tmp_path, profile="fast")
         except Exception:
             pass  # We care about timing, not success
         elapsed = time.time() - start

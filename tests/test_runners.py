@@ -1,12 +1,10 @@
 """Tests for parallel runner execution and profiles."""
 
-import pytest
-from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
+import pytest
 from octp.verification.base import CheckResult, CheckRunner
 from octp.verification.registry import (
-    RUNNER_PROFILES,
     get_available_runners,
     get_runners_for_profile,
     run_all,

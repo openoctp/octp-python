@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import typer
@@ -19,6 +20,38 @@ from octp.provenance.collector import collect_interactively
 from octp.verification.registry import run_all
 
 console = Console()
+
+
+def get_default_provenance() -> dict:
+    """Get default provenance data for non-interactive mode.
+
+    For OCTP project: defaults to AI-assisted with substantial review.
+    """
+    return {
+        "method": "ai_assisted_human_reviewed",
+        "ai_tools": [
+            {
+                "model": "claude-sonnet-4-6",
+                "vendor": "anthropic",
+                "version": "20260226",
+                "usage_type": "architecture_and_implementation",
+            },
+            {
+                "model": "kimi-k2.5",
+                "vendor": "moonshot",
+                "version": "20260226",
+                "usage_type": "implementation_and_scaffolding",
+            },
+        ],
+        "human_review_level": "substantial_modification",
+        "human_review_duration_minutes": None,
+        "optional_context": {},
+    }
+
+
+def is_interactive() -> bool:
+    """Check if running in an interactive terminal."""
+    return sys.stdin.isatty() and sys.stdout.isatty()
 
 
 def sign_command(
@@ -64,13 +97,24 @@ def sign_command(
 
     # Collect provenance declaration
     if yes:
-        provenance_data = {
-            "method": "human_only",
-            "human_review_level": "moderate_review",
-            "optional_context": {},
-        }
+        # Explicit --yes flag: use defaults
+        provenance_data = get_default_provenance()
+        console.print("\n[dim]Using default provenance (non-interactive mode)[/dim]")
+    elif not is_interactive():
+        # No TTY detected: use defaults with warning
+        provenance_data = get_default_provenance()
+        console.print(
+            "\n[yellow]Warning:[/yellow] Non-interactive mode detected. "
+            "Using default provenance. Use --yes to suppress this warning."
+        )
     else:
-        provenance_data = collect_interactively()
+        # Interactive: collect from user
+        try:
+            provenance_data = collect_interactively()
+        except Exception as e:
+            console.print(f"\n[red]Error collecting input:[/red] {e}")
+            console.print("[dim]Falling back to default provenance...[/dim]")
+            provenance_data = get_default_provenance()
 
     # Build and sign envelope
     envelope = build_envelope(
