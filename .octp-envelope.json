@@ -1,0 +1,42 @@
+{
+  "octp_version": "0.1",
+  "contribution_id": "91456d79-5179-4f97-bd19-ab4cc0787350",
+  "timestamp": "2026-02-26T13:03:42.609792Z",
+  "repository": "github.com/openoctp/octp-python",
+  "commit_hash": "b453802d6452e8fef317aac922b8a18b8205afa0",
+  "provenance": {
+    "method": "ai_assisted_human_reviewed",
+    "ai_tools": [
+      {
+        "model": "claude-sonnet-4-6",
+        "vendor": "anthropic",
+        "version": "20260226",
+        "usage_type": "architecture_and_implementation"
+      },
+      {
+        "model": "kimi-k2.5",
+        "vendor": "moonshot",
+        "version": "20260226",
+        "usage_type": "implementation_and_scaffolding"
+      }
+    ],
+    "human_review_level": "substantial_modification",
+    "human_review_duration_minutes": null,
+    "developer_id": "email:yussuf.x56@gmail.com"
+  },
+  "verification": {
+    "tests_passed": null,
+    "test_suite_hash": null,
+    "static_analysis": "skipped",
+    "static_analysis_tool": null,
+    "dependency_check": "skipped",
+    "novel_dependencies_introduced": false
+  },
+  "integrity": {
+    "payload_hash": "4138707972978f30b70fe52e01d605479c3d4d053ed103f71722d214aa1ba4f7",
+    "developer_signature": "MEYCIQCzaz3W8R+ciczTU4W+uRY3k2LpZAFRQMe3nE5ebu4jKQIhAID8FpM+sUGw1XOgVt42ABBUi5ajMjJUJSXVW5ByVyoq",
+    "signature_algorithm": "ES256",
+    "signed_at": "2026-02-26T13:03:42.621699Z"
+  },
+  "optional_context": null
+}

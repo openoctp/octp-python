@@ -44,7 +44,12 @@ def print_envelope_summary(envelope: OCTPEnvelope):
     table.add_row("Review level", envelope.provenance.human_review_level.value)
 
     v = envelope.verification
-    tests = "✓ passed" if v.tests_passed else "✗ failed"
+    if v.tests_passed is True:
+        tests = "✓ passed"
+    elif v.tests_passed is False:
+        tests = "✗ failed"
+    else:
+        tests = "○ skipped"
     analysis = v.static_analysis.value
     deps = v.dependency_check.value
     table.add_row("Tests", tests)

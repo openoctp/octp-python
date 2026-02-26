@@ -50,7 +50,7 @@ class Provenance(BaseModel):
 
 
 class Verification(BaseModel):
-    tests_passed: bool
+    tests_passed: Optional[bool] = None  # None = not run, True = passed, False = failed
     test_suite_hash: Optional[str] = None
     static_analysis: AnalysisResult
     static_analysis_tool: Optional[str] = None

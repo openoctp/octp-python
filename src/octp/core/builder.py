@@ -43,7 +43,7 @@ def build_envelope(
     deps_result = check_results.get("pip-audit")
 
     verification = Verification(
-        tests_passed=tests_result.passed if tests_result else False,
+        tests_passed=tests_result.passed if tests_result else None,
         test_suite_hash=tests_result.suite_hash if tests_result else None,
         static_analysis=AnalysisResult(
             "passed"
