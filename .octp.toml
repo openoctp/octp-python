@@ -6,8 +6,13 @@ allow_unreviewed_ai = false
 
 [runners]
 test_runner = "pytest"
+linting = "ruff"
+type_checking = "mypy"
 static_analysis = "semgrep"
+security_scan = "bandit"
 dependency_check = "pip-audit"
+dependency_audit = "safety"
+secret_detection = "detect-secrets"
 
 [identity]
 require_signed_envelope = true

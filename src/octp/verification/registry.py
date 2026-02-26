@@ -5,13 +5,21 @@ from .pytest_runner import PytestRunner
 from .semgrep_runner import SemgrepRunner
 from .bandit_runner import BanditRunner
 from .deps_runner import DepsRunner
+from .ruff_runner import RuffRunner
+from .mypy_runner import MypyRunner
+from .safety_runner import SafetyRunner
+from .detect_secrets_runner import DetectSecretsRunner
 
 
 ALL_RUNNERS: list[type[CheckRunner]] = [
     PytestRunner,
+    RuffRunner,
+    MypyRunner,
     SemgrepRunner,
     BanditRunner,
     DepsRunner,
+    SafetyRunner,
+    DetectSecretsRunner,
 ]
 
 
