@@ -1,9 +1,11 @@
 from __future__ import annotations
+
 import hashlib
 import shutil
 import subprocess
 from pathlib import Path
-from .base import CheckRunner, CheckResult
+
+from .base import CheckResult, CheckRunner
 
 
 class PytestRunner(CheckRunner):

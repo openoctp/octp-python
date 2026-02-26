@@ -1,9 +1,9 @@
 from __future__ import annotations
-from typing import Optional
-import typer
+
 from rich.console import Console
-from rich.prompt import Prompt, Confirm
-from .models import ProvenanceMethod, ReviewLevel, AITool, Confidence
+from rich.prompt import Prompt
+
+from .models import AITool, ProvenanceMethod, ReviewLevel
 
 console = Console()
 

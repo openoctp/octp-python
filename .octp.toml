@@ -5,15 +5,26 @@ block_on_failed_tests = true
 allow_unreviewed_ai = false
 
 [runners]
+default_profile = "ci"
 test_runner = "pytest"
 linting = "ruff"
 type_checking = "mypy"
 static_analysis = "semgrep"
 security_scan = "bandit"
 dependency_check = "pip-audit"
-dependency_audit = "safety"
 secret_detection = "detect-secrets"
 
 [identity]
 require_signed_envelope = true
 key_registry = "github"
+
+# OCTP is built with AI assistance. Every commit declares this honestly.
+# This project eats its own cooking — we use the trust envelope we built.
+[provenance]
+# Default for this repo: AI-assisted with substantial human review
+# Contributors: Update these fields when running `octp sign` interactively
+expected_method = "ai_assisted_human_reviewed"
+ai_tools = [
+    { model = "claude-sonnet-4-6", vendor = "anthropic", usage = "architecture_and_design" },
+    { model = "kimi-k2.5", vendor = "moonshot", usage = "implementation_and_scaffolding" }
+]

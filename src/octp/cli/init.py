@@ -1,8 +1,10 @@
 from __future__ import annotations
+
 from pathlib import Path
+
 import typer
 from rich.console import Console
-from rich.prompt import Prompt, Confirm
+from rich.prompt import Confirm
 
 console = Console()
 

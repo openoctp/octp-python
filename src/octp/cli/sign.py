@@ -1,20 +1,22 @@
 from __future__ import annotations
+
 from pathlib import Path
+
 import typer
 from rich.console import Console
-from octp.git.reader import read_repo
-from octp.identity.resolver import resolve_developer_id
-from octp.identity.keymanager import ensure_keypair
-from octp.verification.registry import run_all
-from octp.provenance.collector import collect_interactively
+
 from octp.core.builder import build_envelope
+from octp.git.reader import read_repo
+from octp.identity.keymanager import ensure_keypair
+from octp.identity.resolver import resolve_developer_id
 from octp.output.formatter import (
-    print_header,
-    print_verification_results,
     print_envelope_summary,
+    print_header,
     print_success,
+    print_verification_results,
 )
-import json
+from octp.provenance.collector import collect_interactively
+from octp.verification.registry import run_all
 
 console = Console()
 
@@ -28,6 +30,12 @@ def sign_command(
     ),
     yes: bool = typer.Option(
         False, "--yes", "-y", help="Skip interactive prompts — use defaults"
+    ),
+    profile: str = typer.Option(
+        "full",
+        "--profile",
+        "-p",
+        help="Runner profile: fast (3-8s), full (all checks), ci, security",
     ),
 ):
     """Generate and sign a trust envelope for the current commit."""
@@ -43,6 +51,7 @@ def sign_command(
 
     console.print(f"\n  Repository : [cyan]{repo_info.repository}[/cyan]")
     console.print(f"  Commit     : [cyan]{repo_info.commit_hash[:12]}[/cyan]")
+    console.print(f"  Profile    : [cyan]{profile}[/cyan]")
 
     # Resolve identity
     ensure_keypair()
@@ -50,7 +59,7 @@ def sign_command(
     console.print(f"  Developer  : [cyan]{developer_id}[/cyan]\n")
 
     # Run verification checks
-    check_results = run_all(repo_info.root)
+    check_results = run_all(repo_info.root, profile=profile)
     print_verification_results(check_results)
 
     # Collect provenance declaration

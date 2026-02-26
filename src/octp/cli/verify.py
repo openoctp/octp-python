@@ -1,8 +1,11 @@
 from __future__ import annotations
-from pathlib import Path
+
 import json
+from pathlib import Path
+
 import typer
 from rich.console import Console
+
 from octp.core.envelope import OCTPEnvelope
 from octp.integrity.hasher import hash_payload
 from octp.output.formatter import print_header, print_verify_result
@@ -40,7 +43,7 @@ def verify_command(
 
     if computed_hash != envelope.integrity.payload_hash:
         print_verify_result(
-            False, f"Payload hash mismatch — envelope has been tampered with"
+            False, "Payload hash mismatch — envelope has been tampered with"
         )
         raise typer.Exit(1)
 

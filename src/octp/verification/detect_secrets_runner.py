@@ -1,7 +1,9 @@
 from __future__ import annotations
+
 import shutil
 import subprocess
-from .base import CheckRunner, CheckResult
+
+from .base import CheckResult, CheckRunner
 
 
 class DetectSecretsRunner(CheckRunner):
@@ -28,11 +30,11 @@ class DetectSecretsRunner(CheckRunner):
                 has_secrets = len(scan_result.get("results", {})) > 0
                 passed = not has_secrets
                 detail = (
-                    f"No secrets detected"
+                    "No secrets detected"
                     if passed
                     else f"Secrets found: {len(scan_result.get('results', {}))}"
                 )
-            except:
+            except json.JSONDecodeError:
                 detail = "Scan completed" if passed else "Potential secrets detected"
         except subprocess.TimeoutExpired:
             passed = False

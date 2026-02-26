@@ -1,9 +1,11 @@
 from __future__ import annotations
+
+from rich import box
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
-from rich import box
-from octp.core.envelope import OCTPEnvelope, AnalysisResult
+
+from octp.core.envelope import OCTPEnvelope
 
 console = Console()
 

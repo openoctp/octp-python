@@ -1,22 +1,20 @@
 from __future__ import annotations
+
 import uuid
 from datetime import datetime, timezone
-from pathlib import Path
+
 from octp.core.envelope import (
+    AnalysisResult,
+    Integrity,
     OCTPEnvelope,
+    OptionalContext,
     Provenance,
     Verification,
-    Integrity,
-    OptionalContext,
-    AnalysisResult,
-    ProvenanceMethod,
-    ReviewLevel,
-    AITool,
 )
 from octp.git.reader import RepoInfo
-from octp.verification.base import CheckResult
-from octp.integrity.hasher import hash_payload
 from octp.identity.keymanager import sign_payload
+from octp.integrity.hasher import hash_payload
+from octp.verification.base import CheckResult
 
 
 def build_envelope(
@@ -62,7 +60,7 @@ def build_envelope(
             if deps_result and not deps_result.passed
             else "skipped"
         ),
-        novel_dependencies_introduced=False,  # v0.1: always false, future runner detects this
+        novel_dependencies_introduced=False,  # v0.1: always false, future runner
     )
 
     # Build optional context

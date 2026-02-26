@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
@@ -14,11 +15,12 @@ class CheckResult:
 class CheckRunner(ABC):
     """Abstract base for all verification runners."""
 
-    @property
-    @abstractmethod
-    def name(self) -> str:
-        """Runner name for config matching."""
-        ...
+    name: str = ""  # Class attribute - subclasses override this
+
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
+        if not cls.name:
+            raise TypeError(f"{cls.__name__} must define 'name'")
 
     @abstractmethod
     def is_available(self) -> bool:

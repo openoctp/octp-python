@@ -1,13 +1,10 @@
 from __future__ import annotations
+
 import base64
 from pathlib import Path
+
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec
-from cryptography.hazmat.primitives.asymmetric.utils import (
-    decode_dss_signature,
-    encode_dss_signature,
-)
-
 
 KEYS_DIR = Path.home() / ".octp" / "keys"
 PRIVATE_KEY_FILE = KEYS_DIR / "private.pem"

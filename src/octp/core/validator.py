@@ -1,13 +1,15 @@
 from __future__ import annotations
+
 import json
 from pathlib import Path
+
 from octp.core.envelope import OCTPEnvelope
 
 
 def validate_envelope_json(data: dict) -> bool:
     """Validate that a dict conforms to OCTP v0.1 envelope schema."""
     try:
-        envelope = OCTPEnvelope.model_validate(data)
+        OCTPEnvelope.model_validate(data)
         return True
     except Exception:
         return False
