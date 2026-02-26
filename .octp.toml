@@ -1,0 +1,14 @@
+[policy]
+require_envelope = true
+minimum_review_level = "moderate_review"
+block_on_failed_tests = true
+allow_unreviewed_ai = false
+
+[runners]
+test_runner = "pytest"
+static_analysis = "semgrep"
+dependency_check = "pip-audit"
+
+[identity]
+require_signed_envelope = true
+key_registry = "github"

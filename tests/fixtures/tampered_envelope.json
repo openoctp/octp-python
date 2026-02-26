@@ -1,0 +1,24 @@
+{
+  "octp_version": "0.1",
+  "contribution_id": "a3f8c2d1-9b4e-4f7a-8c3d-2e1f9a0b5c6d",
+  "timestamp": "2026-02-26T14:32:11Z",
+  "repository": "github.com/example/myproject",
+  "commit_hash": "7f3a9c2b1e4d8f0a6c5b2e9d3f1a7c4b8e2d5f0a3b6c9d2e5f8a1b4c7d0e3f6",
+  "provenance": {
+    "method": "human_only",
+    "human_review_level": "moderate_review",
+    "developer_id": "github:example-dev"
+  },
+  "verification": {
+    "tests_passed": true,
+    "static_analysis": "skipped",
+    "dependency_check": "skipped",
+    "novel_dependencies_introduced": false
+  },
+  "integrity": {
+    "payload_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "developer_signature": "MEQCIBx3f9kQwABCDEF...",
+    "signature_algorithm": "ES256",
+    "signed_at": "2026-02-26T14:33:02Z"
+  }
+}

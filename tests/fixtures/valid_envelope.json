@@ -1,0 +1,41 @@
+{
+  "octp_version": "0.1",
+  "contribution_id": "a3f8c2d1-9b4e-4f7a-8c3d-2e1f9a0b5c6d",
+  "timestamp": "2026-02-26T14:32:11Z",
+  "repository": "github.com/netlib/fastconn",
+  "commit_hash": "7f3a9c2b1e4d8f0a6c5b2e9d3f1a7c4b8e2d5f0a3b6c9d2e5f8a1b4c7d0e3f6",
+  "provenance": {
+    "method": "ai_assisted_human_reviewed",
+    "ai_tools": [
+      {
+        "model": "claude-sonnet-4-6",
+        "vendor": "anthropic",
+        "version": "20260215",
+        "usage_type": "diagnosis_and_draft"
+      }
+    ],
+    "human_review_level": "substantial_modification",
+    "human_review_duration_minutes": 47,
+    "developer_id": "github:sara-dev-92"
+  },
+  "verification": {
+    "tests_passed": true,
+    "test_suite_hash": "9c4f2a1b8e3d7f0c5a2b9e4d1f8c3a7b",
+    "static_analysis": "passed",
+    "static_analysis_tool": "semgrep@1.45.0",
+    "dependency_check": "passed",
+    "novel_dependencies_introduced": false
+  },
+  "integrity": {
+    "payload_hash": "2b4e8f1a9c3d7b0e5f2a8c4d1b9e3f7a0c5d2b8e4f1a7c3d6b9e2f5a8c1d4e7",
+    "developer_signature": "MEQCIBx3f9kQwABCDEF...",
+    "signature_algorithm": "ES256",
+    "signed_at": "2026-02-26T14:33:02Z"
+  },
+  "optional_context": {
+    "issue_reference": "#447",
+    "self_assessed_confidence": "high",
+    "areas_of_uncertainty": "Thread safety in lines 47-52 — please review carefully",
+    "time_in_codebase_minutes": 90
+  }
+}
